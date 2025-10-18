@@ -35,10 +35,26 @@ urban-intelligence-lab/
 ├── README.md
 └── requirements.txt
 
-
 ---
 
 ## 🚀 Status
 
 **Week 1 – Unified Foundations:**  
 Repository initialized, structure defined, and data integration in progress.
+
+
+## 🗂 Data Layout & Sourcing
+
+- Place **real open datasets** under `data/processed/`:
+  - `molinetes_2024_clean.parquet` → passengers by line
+  - `freq_from_form_2024.csv` or `formaciones_2024.parquet` → average headway (min)
+- The app auto-detects columns with a small heuristic. If a metric is missing, it falls back to **DEMO**.
+- Generate a tiny, consistent demo dataset anytime:
+  ```bash
+  python scripts/prepare_demo_data.py
+
+## ▶️ Run (Local)
+
+# activate venv, then:
+python app/main_dashboard.py
+# open http://127.0.0.1:8050
