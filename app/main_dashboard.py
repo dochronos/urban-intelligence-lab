@@ -56,27 +56,41 @@ def load_passengers():
 def load_other_metric():
     """
     Prioridad:
-      a) Service desde freq_from_form_2024.csv (col: dispatched_trains)
-      b) Service desde formaciones_2024.parquet (col: trains)
-      c) DEMO headway
+      a) Headway estimado desde headway_estimates_2024.csv (avg_headway_min)
+      b) Service desde freq_from_form_2024.csv (dispatched_trains)
+      c) Service desde formaciones_2024.parquet (trains)
+      d) DEMO headway
     """
-    # a) dispatched_trains (mensual)
+    # a) Headway estimado (nuevo ETL)
+    src_h = PROCESSED / "headway_estimates_2024.csv"
+    dfh = read_csv_or_none(src_h)
+    if dfh is not None and not dfh.empty and "line" in dfh.columns and "avg_headway_min" in dfh.columns:
+        # si viene por year_month, hacemos promedio mensual por línea
+        if "year_month" in dfh.columns:
+            agg = (dfh.groupby("line", as_index=False, observed=False)[["avg_headway_min"]]
+                      .mean()
+                      .rename(columns={"avg_headway_min": "value"})
+                      .sort_values("line"))
+        else:
+            agg = dfh.rename(columns={"avg_headway_min": "value"})[["line", "value"]].sort_values("line")
+        agg = agg.rename(columns={"value": "avg_headway_min"})
+        return agg, "headway", src_h.name, "Average Headway (min)", "avg_headway_min"
+
+    # b) Service (mensual)
     src_a = PROCESSED / "freq_from_form_2024.csv"
     dfa = read_csv_or_none(src_a)
     if dfa is not None and not dfa.empty and "line" in dfa.columns and "dispatched_trains" in dfa.columns:
-        agg = group_mean_by_line(dfa, "line", "dispatched_trains")
-        agg = agg.rename(columns={"value": "service_level"})
+        agg = group_mean_by_line(dfa, "line", "dispatched_trains").rename(columns={"value": "service_level"})
         return agg, "service", src_a.name, "Service Level (trains dispatched)", "service_level"
 
-    # b) trains (diario)
+    # c) Service (diario)
     src_b = PROCESSED / "formaciones_2024.parquet"
     dfb = read_parquet_or_none(src_b)
     if dfb is not None and not dfb.empty and "line" in dfb.columns and "trains" in dfb.columns:
-        agg = group_mean_by_line(dfb, "line", "trains")
-        agg = agg.rename(columns={"value": "service_level"})
+        agg = group_mean_by_line(dfb, "line", "trains").rename(columns={"value": "service_level"})
         return agg, "service", src_b.name, "Service Level (trains dispatched)", "service_level"
 
-    # c) DEMO headway
+    # d) DEMO
     demo = pd.DataFrame({
         "line": ["A", "B", "C", "D", "E", "H"],
         "avg_headway_min": [3.5, 4.0, 4.2, 3.8, 5.0, 4.6]
