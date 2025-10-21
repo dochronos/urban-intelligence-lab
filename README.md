@@ -127,6 +127,31 @@ Automate ETL and dashboard updates via n8n
 
 Expand data sources (GTFS, climate, mobility)
 
+---
+
+## 🧠 Week 2 – AI Integration & Headway Calibration
+
+**Objective:**  
+Connect Urban Intelligence Lab’s analytical layer with an AI-driven insight module and calibrated operational metrics.
+
+**Key Milestones**
+- 🔗 Connected Dash & Streamlit for unified analytics  
+- 🧮 Developed ETL for *headway estimation* from train dispatch data  
+- ⚖️ Applied automatic calibration (median ≈ 3.5 min headway)  
+- 🧠 Integrated local LLM (Ollama) to generate weekly insight reports  
+- 🚉 Added Premetro (P) support to extend coverage beyond Subte lines  
+- 🧹 Implemented cache invalidation + auto-cleanup for generated reports  
+
+**Output Artifacts**
+- `data/processed/headway_estimates_2024.csv` (calibrated)
+- `app/insights_streamlit.py` (AI Insights interface)
+- `assets/reports/week2_insights_*.md` (weekly AI summaries)
+
+**Preview**
+> Dashboard now combines passenger data, calibrated service headways, and automated AI summaries generated locally via Ollama — a solid foundation for upcoming predictive modules.
+
+---
+
 ## 🧩 License & Credits
 
 Open data © Gobierno de la Ciudad de Buenos Aires
