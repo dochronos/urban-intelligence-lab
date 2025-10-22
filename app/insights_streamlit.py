@@ -11,7 +11,7 @@ import streamlit as st
 from dotenv import load_dotenv
 
 # ---------------- Config ----------------
-APP_TITLE = "UIL — AI Insights (Week 2)"
+APP_TITLE = "UIL — AI Insights (Week 3)"
 ROOT = Path(".")
 PROCESSED = ROOT / "data" / "processed"
 ASSETS = ROOT / "assets"
@@ -148,7 +148,7 @@ Deliverables:
 # ---------------- UI ----------------
 st.set_page_config(page_title=APP_TITLE, page_icon="🧠", layout="wide")
 st.title(APP_TITLE)
-st.caption("Week 2 — AI-powered insights over passengers & headway.")
+st.caption("Week 3 — Forecasting & Automation · 4-week passenger outlook + n8n integration.")
 
 # --- Paths y botón de recarga ---
 p_pax = PROCESSED / "molinetes_2024_clean.parquet"
@@ -282,6 +282,44 @@ if "date" in pax.columns:
 else:
     st.info("Date column not found in passengers dataset — deltas unavailable.")
 
+# ---- Forecast (next 4 weeks) ----
+st.subheader("Forecast (next 4 weeks)")
+
+from pathlib import Path as _Path
+_fc_path = _Path("data/processed/passengers_forecast_weekly.csv")
+
+if not _fc_path.exists():
+    st.info("No forecast file found. Generate it with: `python scripts/forecast_passengers.py`.")
+else:
+    fc = pd.read_csv(_fc_path)
+    if fc.empty:
+        st.info("Forecast file is empty. Try regenerating it after confirming passengers data.")
+    else:
+        fc["week"] = pd.to_datetime(fc["week"])
+        # Normalizar línea por si acaso
+        fc["line"] = fc["line"].astype(str)
+
+        # Aplicar filtros de líneas ya seleccionados en la UI principal
+        if lines_sel:
+            fc = fc[fc["line"].isin(lines_sel)]
+
+        lines_available = sorted(fc["line"].unique().tolist())
+        if not lines_available:
+            st.info("No forecast available for the current filter.")
+        else:
+            sel_for_chart = st.multiselect("Lines to plot (forecast)",
+                                           options=lines_available,
+                                           default=lines_available[:min(3, len(lines_available))],
+                                           key="fc_lines")
+            if sel_for_chart:
+                pivot_fc = (fc[fc["line"].isin(sel_for_chart)]
+                            .pivot(index="week", columns="line", values="yhat")
+                            .sort_index())
+                st.line_chart(pivot_fc, use_container_width=True)
+
+            with st.expander("Forecast table (next 4 weeks)"):
+                st.dataframe(fc.sort_values(["line","week"]), use_container_width=True)
+
 # ---- AI Summary ----
 st.subheader("AI Summary")
 meta = {"period": f"{date_from} to {date_to}", "lines": lines_sel}
@@ -317,3 +355,44 @@ for old in reports[KEEP:]:
         old.unlink()
     except Exception:
         pass
+
+# ---- Send weekly summary to n8n (visible en sidebar + cuerpo)
+import json
+
+N8N_WEBHOOK_URL = os.getenv("N8N_WEBHOOK_URL", "").strip()
+
+# Panel en SIDEBAR (siempre visible)
+st.sidebar.header("Automation")
+st.sidebar.caption("Send this week's summary via n8n webhook (optional).")
+st.sidebar.text_input("Webhook URL (from .env)", value=N8N_WEBHOOK_URL, key="n8n_url_preview", disabled=True)
+can_send = bool(N8N_WEBHOOK_URL)
+send_sidebar = st.sidebar.button("📬 Send to n8n", disabled=not can_send)
+
+# Panel en el CUERPO (expander)
+with st.expander("Automation"):
+    st.caption("Send this week's summary via n8n webhook (optional).")
+    if not can_send:
+        st.warning("Set N8N_WEBHOOK_URL in your .env and restart Streamlit to enable this.")
+    send_body = st.button("📬 Send to n8n (main)", disabled=not can_send)
+
+send_now = send_sidebar or send_body
+if send_now and can_send:
+    try:
+        payload = {
+            "period": meta["period"],
+            "lines": lines_sel,
+            "kpis": {
+                "total_passengers": float(total_pax or 0),
+                "top_line": str(top_line),
+                "avg_headway_min": float(avg_hw or 0),
+            },
+            "forecast_preview": "data/processed/passengers_forecast_weekly.csv",
+            "report_file": report_path.as_posix(),
+            "summary_md": summary_md,
+            "generated_at": pd.Timestamp.now(tz="UTC").isoformat(),
+        }
+        r = requests.post(N8N_WEBHOOK_URL, json=payload, timeout=20)
+        st.success(f"Sent to n8n. HTTP {r.status_code}")
+        st.code(json.dumps(payload, indent=2)[:1200], language="json")
+    except Exception as e:
+        st.error(f"n8n webhook failed: {e}")

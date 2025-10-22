@@ -152,6 +152,21 @@ Connect Urban Intelligence Lab’s analytical layer with an AI-driven insight mo
 
 ---
 
+## 🧭 Week 3 – Forecasting & Automation
+
+This week’s focus was on **predictive analytics and workflow automation**.
+
+### 🚀 New Features
+- Implemented **4-week passenger forecasting** (Prophet-based pipeline).
+- Integrated **n8n webhook automation** directly from Streamlit.
+- Added **Premetro (P)** line to analytics.
+- Kept **Ollama** as the default AI summarizer (no external API keys required).
+
+### 📊 Screenshot
+![Week 3 Forecast](assets/screenshots/week3_forecast.png)
+
+---
+
 ## 🧩 License & Credits
 
 Open data © Gobierno de la Ciudad de Buenos Aires
