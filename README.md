@@ -1,173 +1,158 @@
-# 🧠 Urban Intelligence Lab
+# 🧠 Urban Intelligence Lab (UIL) — Unified Analytics, Forecasting & Automation
 
-> “Where Business Intelligence meets Machine Learning for urban systems.”
+**Goal:** Build a living urban data ecosystem that integrates **Business Intelligence, AI, and Automation**  
+to explore, forecast, and optimize city systems — starting with the Buenos Aires Subway.
 
-Urban Intelligence Lab is the unified evolution of two complementary projects —  
-**Subte-Dashboard** (urban BI platform) and **AI-Automation Workflow** (AI-based automation pipeline).  
-It combines analytics, automation, and AI models into one living portfolio project focused on **urban systems** such as public transport, mobility, and energy.
-
----
-
-## 🌆 Overview
-
-- **Objective:** create an open, modular laboratory where Business Intelligence meets Machine Learning.  
-- **Context:** the project merges real open data from Buenos Aires with AI-driven insights.  
-- **Focus Areas:** analytics, automation, and prediction applied to real-world city data.  
-- **Data Sources:** open datasets from Buenos Aires Subte (metro system).
+> This repository unifies two projects — *Subte-Dashboard* (BI) and *AI-Automation Workflow* (automation + LLMs) —  
+> into a single professional environment combining data visualization, forecasting, and workflow orchestration.
 
 ---
 
-## 🧱 Tech Stack
-
-| Layer | Technologies |
-|-------|---------------|
-| BI & Visualization | Dash · Plotly · Pandas |
-| Automation | n8n |
-| AI & Insights | Streamlit · Ollama (local LLM) |
-| Data Storage | SQLite · DuckDB · Parquet |
-| Environment | Python 3.12 · Virtualenv |
+## 🔍 Key Objectives
+- Transform open transport data into **actionable urban insights**.
+- Connect **AI-driven automation** with real-time BI dashboards.
+- Forecast future demand and service patterns.
+- Maintain a **fully local**, transparent, and modular setup using **Ollama + n8n**.
 
 ---
 
-## 📁 Structure
+## 🧩 Modules Overview
+| Module | Technology | Purpose |
+|---------|-------------|----------|
+| **Dash Dashboard** | Dash + Plotly | Data visualization and BI (Week 1) |
+| **Streamlit AI Insights** | Streamlit + Ollama | AI summaries and forecasting (Weeks 2 & 3) |
+| **n8n Automation** | n8n | Webhook-based workflow automation |
+| **Unified Portal** | Streamlit | Single entry point (Week 4) |
+| **ETL Scripts** | Pandas + Prophet | Data processing, headway estimation, and forecasts |
 
+---
+
+## 🛠️ Tech Stack
+- **Python 3.12**, **Pandas**, **Plotly Dash**, **Streamlit**
+- **n8n** (automation), **Ollama LLMs** (local AI)
+- **DuckDB / SQLite** for lightweight persistence
+- **Prophet** for time-series forecasting
+- **Kaleido** for chart exports
+- **dotenv + requests** for environment and integration management
+
+---
+
+## 📂 Repository Structure
 urban-intelligence-lab/
-├── app/ # Dash/Streamlit apps
+├── app/
+│ ├── main_dashboard.py # Dash BI
+│ ├── insights_streamlit.py # Streamlit + AI
+│ └── ui_hub.py # Unified portal
 ├── data/
-│ ├── raw/ # Raw open data
-│ └── processed/ # Cleaned datasets
-├── notebooks/ # ETL and analysis
-├── scripts/ # Reusable scripts
+│ ├── raw/
+│ └── processed/ # Cleaned & forecast data
+├── scripts/
+│ ├── etl_headway_from_formaciones.py
+│ ├── forecast_passengers.py
+│ ├── generate_screenshot.py
+│ └── capture_to_n8n.py
+├── notebooks/
+│ └── Week4_Data_Quality.ipynb
 ├── assets/
-│ └── screenshots/ # Visual assets for posts
-├── README.md
-└── requirements.txt
+│ ├── screenshots/
+│ └── reports/
+├── requirements.txt
+└── README.md
 
 ---
 
-## 📊 Datasets Used
+## 📊 Development Timeline (Weeks 1 – 4)
 
-| File | Description | Source |
-|------|--------------|--------|
-| `molinetes_2024_clean.parquet` | Passengers by line | Subte open data |
-| `freq_from_form_2024.csv` | Monthly dispatched trains | Derived from Subte data |
-| `formaciones_2024.parquet` | Daily train formations | Subte open data |
-| `headway_estimates_2024.csv` | Estimated headway (min) | Generated via ETL script |
-
----
-
-## ⚙️ ETL and Processing
-
-**Headway estimation formula:**
-
-avg_headway_min = (OPERATING_MIN_PER_DAY * days_in_month) / dispatched_trains
-
-OPERATING_MIN_PER_DAY = 1080 (18 operational hours)
-
-Derived in scripts/etl_headway_from_formaciones.py
-
-Output → data/processed/headway_estimates_2024.csv
-
-python scripts/etl_headway_from_formaciones.py
+| Week | Focus | Main Deliverables |
+|------|--------|------------------|
+| **Week 1** | Unified foundations | Repo setup, base dashboards, data integration |
+| **Week 2** | AI insights | Streamlit + Ollama integration for weekly reports |
+| **Week 3** | Forecasts & automation | Prophet forecasts, n8n webhook connection |
+| **Week 4** | Public release | Unified portal, data verification, v1.0.0 release |
 
 ---
 
-## 🚀 Status
+## 🧭 Week Highlights
 
-**Week 1 – Unified Foundations:**  
-Repository initialized, structure defined, and data integration in progress.
+### Week 1 – Unified Foundations
+✅ Merged Subte-Dashboard + AI-Automation projects  
+✅ Re-integrated cleaned datasets (`molinetes_2024_clean.parquet`, `formaciones_2024.parquet`)  
+✅ Dash dashboard with passenger trends and service data  
 
-
-## 🗂 Data Layout & Sourcing
-
-- Place **real open datasets** under `data/processed/`:
-  - `molinetes_2024_clean.parquet` → passengers by line
-  - `freq_from_form_2024.csv` or `formaciones_2024.parquet` → average headway (min)
-- The app auto-detects columns with a small heuristic. If a metric is missing, it falls back to **DEMO**.
-- Generate a tiny, consistent demo dataset anytime:
-  python scripts/prepare_demo_data.py
-
-## ▶️ Run (Local)
-
-# activate venv, then:
-python app/main_dashboard.py
-# open http://127.0.0.1:8050
-
-## 🧪 Headway Estimates (Week 1)
-
-We don’t have native headway fields in source data, so we derive **avg_headway_min** using a transparent proxy:
-
-- From `freq_from_form_2024.csv` (monthly): `avg_headway_min = (OPERATING_MIN_PER_DAY * days_in_month) / dispatched_trains`
-- Fallback: from `formaciones_2024.parquet` (daily → monthly aggregation)
-
-Assumptions:
-- `OPERATING_MIN_PER_DAY = 1080` (18h/day). Adjust in `scripts/etl_headway_from_formaciones.py`.
+📸 *Screenshot:* `assets/screenshots/week1_dashboard.png`
 
 ---
 
-## 🚀 Week 1 – Unified Foundations
+### Week 2 – AI Insights
+✅ Added **Ollama** integration for local AI summaries  
+✅ Weekly reports auto-saved in `/assets/reports/`  
+✅ Introduced data filters and KPIs  
 
-Highlights:
-
-Created base repository and folder structure
-
-Connected real passenger and service datasets
-
-Built first Dash visualization
-
-Derived and visualized Average Headway (min)
-
-Generated reproducible screenshot assets
-
-Next Steps (Weeks 2–3):
-
-Integrate AI-driven insights via Streamlit + Ollama
-
-Automate ETL and dashboard updates via n8n
-
-Expand data sources (GTFS, climate, mobility)
+📸 *Screenshot:* `assets/screenshots/week2_ai_insights.png`
 
 ---
 
-## 🧠 Week 2 – AI Integration & Headway Calibration
+### Week 3 – Forecasting & Automation
+✅ **4-week passenger forecasting** (Prophet pipeline)  
+✅ **n8n automation** to send weekly summaries  
+✅ Added **Premetro (P)** to analytics  
 
-**Objective:**  
-Connect Urban Intelligence Lab’s analytical layer with an AI-driven insight module and calibrated operational metrics.
-
-**Key Milestones**
-- 🔗 Connected Dash & Streamlit for unified analytics  
-- 🧮 Developed ETL for *headway estimation* from train dispatch data  
-- ⚖️ Applied automatic calibration (median ≈ 3.5 min headway)  
-- 🧠 Integrated local LLM (Ollama) to generate weekly insight reports  
-- 🚉 Added Premetro (P) support to extend coverage beyond Subte lines  
-- 🧹 Implemented cache invalidation + auto-cleanup for generated reports  
-
-**Output Artifacts**
-- `data/processed/headway_estimates_2024.csv` (calibrated)
-- `app/insights_streamlit.py` (AI Insights interface)
-- `assets/reports/week2_insights_*.md` (weekly AI summaries)
-
-**Preview**
-> Dashboard now combines passenger data, calibrated service headways, and automated AI summaries generated locally via Ollama — a solid foundation for upcoming predictive modules.
+📸 *Screenshot:* `assets/screenshots/week3_forecast.png`
 
 ---
 
-## 🧭 Week 3 – Forecasting & Automation
+### Week 4 – Consolidation & Public Release
+✅ **Unified Portal (`ui_hub.py`)** connecting Dash, Streamlit, n8n  
+✅ Data quality validation (`Week4_Data_Quality.ipynb`)  
+✅ Repository structured and documented for public portfolio  
+✅ First stable version **v1.0.0** released  
 
-This week’s focus was on **predictive analytics and workflow automation**.
-
-### 🚀 New Features
-- Implemented **4-week passenger forecasting** (Prophet-based pipeline).
-- Integrated **n8n webhook automation** directly from Streamlit.
-- Added **Premetro (P)** line to analytics.
-- Kept **Ollama** as the default AI summarizer (no external API keys required).
-
-### 📊 Screenshot
-![Week 3 Forecast](assets/screenshots/week3_forecast.png)
+📸 *Screenshot:*  
+![Week 4 Launch](assets/screenshots/week4_launch.png)  
 
 ---
 
-## 🧩 License & Credits
+## 🧪 Getting Started (Local)
 
-Open data © Gobierno de la Ciudad de Buenos Aires
-Developed by Herman Schubert as part of the Professional Developer & Full Stack certification projects.
+git clone https://github.com/dochronos/urban-intelligence-lab.git
+cd urban-intelligence-lab
+
+# Virtual environment
+python -m venv .venv
+.venv\Scripts\activate  # Windows
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run the unified portal
+streamlit run app/ui_hub.py --server.port 8502
+
+---
+
+🔗 LinkedIn Posts (Build in Public)
+
+| Week | Title                          | Date        |
+| ---- | ------------------------------ | ----------- |
+| 1    | Unified Foundations            | Oct 27 2025 |
+| 2    | AI Insights                    | Nov 3 2025  |
+| 3    | Forecasting & Automation       | Nov 10 2025 |
+| 4    | Public Release & Consolidation | Nov 17 2025 |
+
+---
+
+🧩 Evolution — Phase 2 (Dec 2025 → Feb 2026)
+
+REST API endpoints (FastAPI) for data queries
+
+Predictive dashboards and alerting system
+
+City-wide mobility datasets (GTFS, weather, events)
+
+Publication of an Urban Data Hub demo site
+
+---
+
+📜 License
+
+Open for educational and portfolio purposes.
+Data © Gobierno de la Ciudad de Buenos Aires — open-data license.
