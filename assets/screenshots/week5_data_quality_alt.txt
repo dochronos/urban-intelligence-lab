@@ -1,0 +1,7 @@
+Screenshot of a Jupyter Notebook titled “Week 5 – Data Quality & Turnstile Pipeline”. 
+The notebook shows Python code importing the data quality pipeline and running it on the consolidated dataset. 
+Below the code, a DataFrame preview displays several rows of Subte turnstile data, with standardized columns such as station, date, time, direction, and entries. 
+The table indicates more than 1.23 million rows, illustrating the scale of the processed dataset. 
+The visual highlights the successful execution of the data-cleaning workflow for Week 5 of the Urban Intelligence Lab.
+
+Jupyter Notebook showing the Week 5 data-quality pipeline running on Subte turnstile data, including a preview of standardized columns and 1.23M cleaned rows.

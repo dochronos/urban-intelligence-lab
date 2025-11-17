@@ -79,7 +79,8 @@ urban-intelligence-lab/
 ✅ Re-integrated cleaned datasets (`molinetes_2024_clean.parquet`, `formaciones_2024.parquet`)  
 ✅ Dash dashboard with passenger trends and service data  
 
-📸 *Screenshot:* `assets/screenshots/week1_dashboard.png`
+📸 *Screenshot:* 
+![Week 1](assets/screenshots/week1_dashboard.png)
 
 ---
 
@@ -88,7 +89,8 @@ urban-intelligence-lab/
 ✅ Weekly reports auto-saved in `/assets/reports/`  
 ✅ Introduced data filters and KPIs  
 
-📸 *Screenshot:* `assets/screenshots/week2_ai_insights.png`
+📸 *Screenshot:* 
+![Week 2](assets/screenshots/week2_ai_insights.png)
 
 ---
 
@@ -97,18 +99,30 @@ urban-intelligence-lab/
 ✅ **n8n automation** to send weekly summaries  
 ✅ Added **Premetro (P)** to analytics  
 
-📸 *Screenshot:* `assets/screenshots/week3_forecast.png`
+📸 *Screenshot:*
+![Week 3](assets/screenshots/week3_forecast.png)
 
 ---
 
 ### Week 4 – Consolidation & Public Release
-✅ **Unified Portal (`ui_hub.py`)** connecting Dash, Streamlit, n8n  
-✅ Data quality validation (`Week4_Data_Quality.ipynb`)  
-✅ Repository structured and documented for public portfolio  
+✅ Unified Portal (`ui_hub.py`) connecting Dash, Streamlit, and n8n  
+✅ Repository reorganized for long-term scalability  
+✅ Project structure aligned for the new Urban Intelligence Lab vision  
 ✅ First stable version **v1.0.0** released  
 
 📸 *Screenshot:*  
 ![Week 4 Launch](assets/screenshots/week4_launch.png)  
+
+---
+
+### Week 5 – Data Quality & Turnstile Pipeline
+✅ Consolidated **24 turnstile (`molinetes`) CSV files** into a unified dataset  
+✅ Standardized column names + basic cleaning (duplicates, string trimming)  
+✅ Applied the new **Data Quality Pipeline (`utils/data_quality.py`)**  
+✅ Generated a clean dataset in `data/processed/` for Week 6 analytics  
+
+📸 *Screenshot:*  
+![Week 5 Data Quality](assets/screenshots/week5_data_quality.png)
 
 ---
 
