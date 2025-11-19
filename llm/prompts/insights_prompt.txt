@@ -1,0 +1,12 @@
+You are an expert in urban mobility analytics. 
+Generate a clear, concise narrative based on the following summary derived from Buenos Aires Subte turnstile data.
+
+The tone should be analytical, professional, and accessible to non-technical readers.
+
+Use ~4–6 short paragraphs. 
+Highlight patterns, anomalies, peaks, and the general behavior of passengers.
+
+Dataset Summary:
+{{DATA_SUMMARY}}
+
+Write the insights below:

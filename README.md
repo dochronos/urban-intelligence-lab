@@ -126,6 +126,17 @@ urban-intelligence-lab/
 
 ---
 
+### Week 6 – LLM Insights & Narrative Dashboard
+✅ Added **AI-generated insights** using a local LLM (Ollama `llama3.2:3b`)  
+✅ Built **Subte Insights Dashboard** with real data + LLM narrative  
+✅ Implemented automatic **station + passenger column detection**  
+✅ Integrated **interactive analytics** (top stations, passenger volumes)  
+
+📸 *Screenshot:*  
+![Week 6 Insights](assets/screenshots/week6_insights.png)
+
+---
+
 ## 🧪 Getting Started (Local)
 
 git clone https://github.com/dochronos/urban-intelligence-lab.git

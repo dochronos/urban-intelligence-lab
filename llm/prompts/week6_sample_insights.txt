@@ -1,0 +1,9 @@
+Analyzing Buenos Aires Subte Turnstile Data: Uncovering Passenger Behavior
+
+The turnstile data from the Buenos Aires Subte provides a wealth of information about passenger behavior, highlighting patterns and trends that can inform urban mobility strategies. Our analysis reveals that certain stations are hubs for public transportation, with Constitucion Station standing out as the busiest, followed closely by Federico Lacroze and San Pedrito Stations.
+
+In terms of line usage, Linea B emerges as the most popular, accounting for 224,587 turnstile transactions. This is not surprising, given its extensive network and high frequency of service. In contrast, Linea C lags behind with significantly fewer turnstile events. Another notable trend is the popularity of Retiro Station, which rounds out the top five busiest stations.
+
+A closer examination of the data reveals a seasonal pattern in passenger traffic. For example, peak hours typically occur between 7-9 am and 4-6 pm, suggesting that commuters rely on the Subte for daily commutes. Notably, there is an anomaly observed at Rosas Station, which experiences significantly higher turnstile activity than its expected usage rate.
+
+By analyzing these patterns and trends, urban mobility planners can make informed decisions about service expansions, capacity increases, or targeted marketing campaigns to attract more passengers to underutilized lines like Linea C. By better understanding passenger behavior, Buenos Aires can create a more efficient, effective, and appealing public transportation system that meets the needs of its citizens.

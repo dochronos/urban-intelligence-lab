@@ -1,0 +1,1 @@
+Screenshot of the Week 6 “Subte Insights” dashboard showing a bar chart of the top 10 busiest stations based on passenger activity. The interface also includes an option to generate AI-powered narrative insights using a local LLM model (llama3.2:3b). The dashboard is part of the Urban Intelligence Lab project and combines real Subte turnstile data with interactive analytics.
