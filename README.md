@@ -137,6 +137,17 @@ urban-intelligence-lab/
 
 ---
 
+### Week 7 – LLM Incident Classification in n8n
+✅ Added an **incident classifier module** (`llm/classifier.py`) using a local LLM (Ollama `llama3.2:3b`)  
+✅ Built an **n8n workflow** to send free-text Subte incidents to the LLM and parse a structured classification  
+✅ Standardized the JSON schema for `category`, `severity`, `line`, `station`, and `target_team`  
+✅ Prepared the foundation for future automated routing and logging inside the Urban Intelligence Lab  
+
+📸 *Screenshot:*  
+![Week 7 n8n Workflow](assets/screenshots/week7_n8n_workflow.png)
+
+---
+
 ## 🧪 Getting Started (Local)
 
 git clone https://github.com/dochronos/urban-intelligence-lab.git

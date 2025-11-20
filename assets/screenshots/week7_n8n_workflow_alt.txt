@@ -1,0 +1,3 @@
+Screenshot of an n8n workflow from the Urban Intelligence Lab project. The flow starts with a manual trigger, then an Edit Fields node that sets a sample incident description, a JavaScript “Build Prompt” node, an HTTP “Call Ollama” node that queries a local LLM model, and a “Parse Classification” code node that converts the LLM response into structured JSON.
+
+n8n workflow that classifies Subte incident reports using a local LLM: manual trigger, edit fields, build prompt, call Ollama, and parse classification nodes connected in sequence.
