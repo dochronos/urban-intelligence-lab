@@ -148,6 +148,17 @@ urban-intelligence-lab/
 
 ---
 
+### Week 8 – Unified Master Dashboard & Phase 2 Retrospective
+✅ Created a **single Streamlit dashboard** integrating Subte analytics, LLM-based insights, and incident classification  
+✅ Added an interactive demo for free-text incident routing aligned with n8n and Python modules  
+✅ Consolidated all Phase 2 work into a public-ready portfolio structure  
+✅ Published final retrospective and roadmap for next phase  
+
+📸 *Screenshot:*  
+![Week 8 Master Dashboard](assets/screenshots/week8_master_dashboard.png)
+
+---
+
 ## 🧪 Getting Started (Local)
 
 git clone https://github.com/dochronos/urban-intelligence-lab.git
