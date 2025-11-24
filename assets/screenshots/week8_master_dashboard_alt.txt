@@ -1,0 +1,3 @@
+Screenshot of the Urban Intelligence Lab Master Dashboard built with Streamlit. The view shows the “Subte Analytics” section with a horizontal bar chart of the top 10 busiest stations, high-level KPIs for passenger traffic, and a left sidebar with navigation items for Subte Analytics, LLM Insights, Incident Classification Demo, and About & Roadmap.
+
+Master dashboard of the Urban Intelligence Lab project in Streamlit, showing the Subte Analytics section with a sidebar for LLM insights, incident classification, and roadmap.

@@ -1,39 +1,27 @@
-# 🧠 Urban Intelligence Lab (UIL) — Unified Analytics, Forecasting & Automation
+# Urban Intelligence Lab — Analytics, LLM Automation & Smart Workflows
 
-**Goal:** Build a living urban data ecosystem that integrates **Business Intelligence, AI, and Automation**  
-to explore, forecast, and optimize city systems — starting with the Buenos Aires Subway.
+**Urban Intelligence Lab** is an integrated environment that combines **public-transport analytics**,  
+**LLM-powered insights**, and **automation workflows** to model, monitor, and understand urban mobility systems.
 
-> This repository unifies two projects — *Subte-Dashboard* (BI) and *AI-Automation Workflow* (automation + LLMs) —  
-> into a single professional environment combining data visualization, forecasting, and workflow orchestration.
+The project unifies datasets from Buenos Aires’ Subte system with local LLMs (via Ollama), Python-based  
+pipelines, Streamlit dashboards, and n8n workflows—creating a modular platform that transforms raw data  
+into forecasts, insights, classifications, and automated actions.
 
----
+### 🔍 What the project delivers
+- **Turnstile analytics** with cleaned, curated datasets  
+- **LLM-generated narrative insights** and context-aware analysis  
+- **Automated incident classification** (Python + n8n + Ollama)  
+- **Unified master dashboard** combining analytics, insights, and workflow demos  
+- **Modular architecture** designed for extensibility (Fase 3 & 4 planned)
 
-## 🔍 Key Objectives
-- Transform open transport data into **actionable urban insights**.
-- Connect **AI-driven automation** with real-time BI dashboards.
-- Forecast future demand and service patterns.
-- Maintain a **fully local**, transparent, and modular setup using **Ollama + n8n**.
+### 🧱 Technologies
+**Python (pandas, DuckDB, Streamlit), Ollama (local LLM), n8n (workflow automation), Prophet forecasting,  
+data-quality pipelines, modular utilities.**
 
----
-
-## 🧩 Modules Overview
-| Module | Technology | Purpose |
-|---------|-------------|----------|
-| **Dash Dashboard** | Dash + Plotly | Data visualization and BI (Week 1) |
-| **Streamlit AI Insights** | Streamlit + Ollama | AI summaries and forecasting (Weeks 2 & 3) |
-| **n8n Automation** | n8n | Webhook-based workflow automation |
-| **Unified Portal** | Streamlit | Single entry point (Week 4) |
-| **ETL Scripts** | Pandas + Prophet | Data processing, headway estimation, and forecasts |
-
----
-
-## 🛠️ Tech Stack
-- **Python 3.12**, **Pandas**, **Plotly Dash**, **Streamlit**
-- **n8n** (automation), **Ollama LLMs** (local AI)
-- **DuckDB / SQLite** for lightweight persistence
-- **Prophet** for time-series forecasting
-- **Kaleido** for chart exports
-- **dotenv + requests** for environment and integration management
+### 🎯 Purpose
+The lab demonstrates the intersection of **data engineering**, **LLM engineering**, **automation**, and  
+**product-oriented analytics**, making it a strong portfolio project with real-world applicability in  
+transportation, operations, and intelligent systems.
 
 ---
 
@@ -159,6 +147,14 @@ urban-intelligence-lab/
 
 ---
 
+📘 Retrospective – Phase 1 & Phase 2 (Weeks 1–8)
+
+Phase 1 (Weeks 1–4) — Consolidated two separate projects into a unified urban analytics environment. Established a clean repository structure, integrated forecasting and automation modules, implemented initial data-quality validation, and published the first stable release (v1.0.0).
+
+Phase 2 (Weeks 5–8) — Added a full data-quality pipeline for turnstile datasets, LLM-generated insights (via a local model), an automated incident-classification workflow (Python + n8n), and a unified Streamlit master dashboard. The project now combines analytics, automation, and LLM intelligence in a production-ready portfolio format.
+
+---
+
 ## 🧪 Getting Started (Local)
 
 git clone https://github.com/dochronos/urban-intelligence-lab.git
@@ -173,29 +169,6 @@ pip install -r requirements.txt
 
 # Run the unified portal
 streamlit run app/ui_hub.py --server.port 8502
-
----
-
-🔗 LinkedIn Posts (Build in Public)
-
-| Week | Title                          | Date        |
-| ---- | ------------------------------ | ----------- |
-| 1    | Unified Foundations            | Oct 27 2025 |
-| 2    | AI Insights                    | Nov 3 2025  |
-| 3    | Forecasting & Automation       | Nov 10 2025 |
-| 4    | Public Release & Consolidation | Nov 17 2025 |
-
----
-
-🧩 Evolution — Phase 2 (Dec 2025 → Feb 2026)
-
-REST API endpoints (FastAPI) for data queries
-
-Predictive dashboards and alerting system
-
-City-wide mobility datasets (GTFS, weather, events)
-
-Publication of an Urban Data Hub demo site
 
 ---
 
