@@ -24,3 +24,7 @@ Thumbs.db
 # IDE settings
 .vscode/
 .idea/
+
+# Runtime databases / logs
+data/logs/*.duckdb
+

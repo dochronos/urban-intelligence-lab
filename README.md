@@ -147,6 +147,16 @@ urban-intelligence-lab/
 
 ---
 
+### Week 9 – Daily Pipeline & Incident Logging
+✅ Simulated daily ingestion pipeline from cleaned Subte turnstile data  
+✅ Created a lightweight DuckDB logging layer for ingestion metadata  
+✅ Inserted demo incident records to validate the incident timeline structure  
+
+📸 *Screenshot:*  
+![Week 9 Daily Pipeline](assets/screenshots/week9_daily_pipeline.png)
+
+---
+
 📘 Retrospective – Phase 1 & Phase 2 (Weeks 1–8)
 
 Phase 1 (Weeks 1–4) — Consolidated two separate projects into a unified urban analytics environment. Established a clean repository structure, integrated forecasting and automation modules, implemented initial data-quality validation, and published the first stable release (v1.0.0).

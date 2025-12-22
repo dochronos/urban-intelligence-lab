@@ -1,0 +1,1 @@
+Jupyter notebook showing a successful daily ingestion pipeline for Subte turnstile data, with ingestion metadata stored and queried from a DuckDB logging database.
