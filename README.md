@@ -157,6 +157,16 @@ urban-intelligence-lab/
 
 ---
 
+### Week 10 – Anomaly Detection (Mobility Monitoring)
+✅ Implemented **daily anomaly detection** (rolling window + z-score flags)  
+✅ Produced anomaly indicators ready for monitoring dashboards and alerts  
+✅ Added reusable ML utilities in `ml/anomaly_detector.py`  
+
+📸 *Screenshot:*  
+![Week 10 Anomaly Detection](assets/screenshots/week10_anomaly_detection.png)
+
+---
+
 📘 Retrospective – Phase 1 & Phase 2 (Weeks 1–8)
 
 Phase 1 (Weeks 1–4) — Consolidated two separate projects into a unified urban analytics environment. Established a clean repository structure, integrated forecasting and automation modules, implemented initial data-quality validation, and published the first stable release (v1.0.0).

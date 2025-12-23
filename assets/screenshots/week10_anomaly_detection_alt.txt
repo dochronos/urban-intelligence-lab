@@ -1,0 +1,1 @@
+Notebook chart showing daily Subte ridership with a rolling mean and anomaly points flagged using a z-score threshold.
