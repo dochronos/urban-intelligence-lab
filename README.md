@@ -167,6 +167,16 @@ urban-intelligence-lab/
 
 ---
 
+### Week 11 – Smart Incident Routing (Hybrid Rules + LLM)
+✅ Built a **hybrid routing layer** combining LLM output with domain rules  
+✅ Generated standardized **incident ticket objects** for downstream systems  
+✅ Prepared the pipeline for automated operational actions  
+
+📸 *Screenshot:*  
+![Week 11 Smart Routing](assets/screenshots/week11_smart_routing.png)
+
+---
+
 📘 Retrospective – Phase 1 & Phase 2 (Weeks 1–8)
 
 Phase 1 (Weeks 1–4) — Consolidated two separate projects into a unified urban analytics environment. Established a clean repository structure, integrated forecasting and automation modules, implemented initial data-quality validation, and published the first stable release (v1.0.0).

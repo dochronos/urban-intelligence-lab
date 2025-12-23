@@ -1,0 +1,1 @@
+Notebook output showing a standardized incident ticket built from LLM classification and rule-based routing logic.
