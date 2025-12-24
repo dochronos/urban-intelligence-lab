@@ -178,20 +178,28 @@ urban-intelligence-lab/
 ---
 
 ### Week 12 – System Overview Dashboard (v2.0.0)
-✅ Delivered a unified system dashboard integrating analytics, anomalies, LLM insights, and routing  
+✅ Delivered a **unified system dashboard** integrating analytics, anomalies, LLM insights, and routing  
 ✅ Centralized operational view designed for future real-time extensions  
-✅ Released v2.0.0, concluding Phase 3  
+✅ Released **v2.0.0**, concluding Phase 3  
 
 📸 *Screenshot:*  
 ![Week 12 System Overview](assets/screenshots/week12_system_overview.png)
 
 ---
 
-📘 Retrospective – Phase 1 & Phase 2 (Weeks 1–8)
+## Project Closure & Retrospective (Weeks 1–12)
 
-Phase 1 (Weeks 1–4) — Consolidated two separate projects into a unified urban analytics environment. Established a clean repository structure, integrated forecasting and automation modules, implemented initial data-quality validation, and published the first stable release (v1.0.0).
+Urban Intelligence Lab was developed over a 12-week period as a structured, iterative project focused on combining urban mobility analytics, LLM-powered intelligence, and automated workflows.
 
-Phase 2 (Weeks 5–8) — Added a full data-quality pipeline for turnstile datasets, LLM-generated insights (via a local model), an automated incident-classification workflow (Python + n8n), and a unified Streamlit master dashboard. The project now combines analytics, automation, and LLM intelligence in a production-ready portfolio format.
+Across three phases, the project evolved from foundational analytics into a unified system that includes:
+- Clean and scalable data pipelines
+- LLM-generated narrative insights and incident classification
+- Automated workflows with observability and logging
+- A system overview dashboard designed with product thinking
+
+**Phase 3 concluded with the release of v2.0.0**, delivering daily ingestion pipelines, anomaly detection, smart incident routing, and a unified operational dashboard.
+
+The project is now in a stable and documented state, serving as a complete portfolio piece and a foundation for future extensions such as real-time ingestion, alerting, and multi-city support.
 
 ---
 
