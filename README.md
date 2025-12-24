@@ -177,6 +177,16 @@ urban-intelligence-lab/
 
 ---
 
+### Week 12 – System Overview Dashboard (v2.0.0)
+✅ Delivered a unified system dashboard integrating analytics, anomalies, LLM insights, and routing  
+✅ Centralized operational view designed for future real-time extensions  
+✅ Released v2.0.0, concluding Phase 3  
+
+📸 *Screenshot:*  
+![Week 12 System Overview](assets/screenshots/week12_system_overview.png)
+
+---
+
 📘 Retrospective – Phase 1 & Phase 2 (Weeks 1–8)
 
 Phase 1 (Weeks 1–4) — Consolidated two separate projects into a unified urban analytics environment. Established a clean repository structure, integrated forecasting and automation modules, implemented initial data-quality validation, and published the first stable release (v1.0.0).
